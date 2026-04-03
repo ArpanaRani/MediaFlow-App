@@ -21,7 +21,9 @@ struct DownloadsView: View {
                     ForEach(viewModel.mediaItems) { item in
                         MediaRowView(
                             item: item,
-                            state: viewModel.state(for: item)
+                            onDownload: {
+                                    viewModel.downlodadIfNeeded(for:item)
+                                }
                         )
                     }
                 }

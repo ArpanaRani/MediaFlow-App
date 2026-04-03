@@ -23,7 +23,7 @@ struct CustomTabBarView: View {
                
                HStack {
 
-                   TabBarButtonView(systemImageName: "square.and.arrow.down", title: "Downloads") {
+                   TabBarButtonView(systemImageName: "magnifyingglass", title: "Explore") {
                        selectedIndex = 0
                    }
                    Spacer()

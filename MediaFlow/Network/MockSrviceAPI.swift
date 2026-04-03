@@ -16,28 +16,24 @@ struct MockSrviceAPI: ServiceAPIProtocol {
         
         let mockMedia: [MediaItem] = [
             MediaItem(
-                id: 1,
+                id: "1",
                 title: "Beautiful Landscape",
                 url: "https://picsum.photos/id/10/300/300",
-                thumbnailUrl: "https://picsum.photos/id/10/100/100"
             ),
             MediaItem(
-                id: 2,
+                id: "2",
                 title: "Mountain View",
                 url: "https://picsum.photos/id/20/300/300",
-                thumbnailUrl: "https://picsum.photos/id/20/100/100"
             ),
             MediaItem(
-                id: 3,
+                id: "3",
                 title: "City Lights",
                 url: "https://picsum.photos/id/30/300/300",
-                thumbnailUrl: "https://picsum.photos/id/30/100/100"
             ),
             MediaItem(
-                id: 4,
+                id: "4",
                 title: "Ocean Breeze",
                 url: "https://picsum.photos/id/40/300/300",
-                thumbnailUrl: "https://picsum.photos/id/40/100/100"
             )
         ]
         try await Task.sleep(nanoseconds: 1_000_000_000)

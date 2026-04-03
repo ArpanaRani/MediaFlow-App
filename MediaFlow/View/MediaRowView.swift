@@ -11,35 +11,49 @@ import SwiftUI
 struct MediaRowView: View {
     
     let item: MediaItem
-    let state: DownloadState
-    
+   // let state: DownloadState
+    let onDownload: () -> Void
     var body: some View {
         HStack(spacing: 12) {
             
-            let urlString = safeImageURL(from: item.thumbnailUrl)
-            
-            // Thumbnail
-            AsyncImage(url:  urlString)  { phase in
-                
-                switch phase {
-                case .empty:
-                    //  Loading
-                    ProgressView()
+            let urlString = URL(string:item.thumbnailUrl)
+           
+            ZStack {
+                // Thumbnail
+                AsyncImage(url:  urlString)  { phase in
                     
-                case .success(let image):
-                    // Download completed
-                    image
-                        .resizable()
-                        .scaledToFill()
-                    
-                case .failure:
-                    //  Failed
-                    Image(systemName: "xmark.circle")
-                        .foregroundColor(.red)
-                    
-                @unknown default:
-                    EmptyView()
+                    switch phase {
+                    case .empty:
+                        //  Loading
+                        ProgressView()
+                        
+                    case .success(let image):
+                        // Download completed
+                        image
+                            .resizable()
+                            .scaledToFill()
+                        
+                    case .failure:
+                        //  Failed
+                        Image(systemName: "xmark.circle")
+                            .foregroundColor(.red)
+                        
+                    @unknown default:
+                        EmptyView()
+                    }
                 }
+                Button {
+                    // trigger download
+                   onDownload()
+                } label: {
+                    Image(systemName:item.iconName(for: item.downloadState))
+                        .font(.system(size: 26))
+                        .foregroundColor(.white)
+                        .opacity(0.9)
+                }
+                .background(Color.black.opacity(0.3))
+                .clipShape(Circle())
+                
             }
             .frame(width: 70, height: 70)
             .cornerRadius(10)
@@ -51,10 +65,11 @@ struct MediaRowView: View {
                     .lineLimit(2)
                 
                 // State UI
-                switch state {
-                    
+                switch item.downloadState {
+                 
                 case .notStarted:
-                    Text("Waiting...")
+                  
+                    Text("Waiting to download..")
                         .font(.caption)
                         .foregroundColor(.gray)
                     
@@ -75,7 +90,9 @@ struct MediaRowView: View {
                     Text("Failed")
                         .font(.caption)
                         .foregroundColor(.red)
+                    
                 }
+
             }
             
             Spacer()

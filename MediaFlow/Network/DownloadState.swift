@@ -12,4 +12,5 @@ enum DownloadState {
     case downloading(progress: Double)
     case completed(localURL: URL)
     case failed
+    
 }

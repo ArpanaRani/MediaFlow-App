@@ -24,7 +24,7 @@ struct SrviceAPI: ServiceAPIProtocol {
         
         do{
             return try JSONDecoder().decode(T.self, from: data)
-        }catch {
+        }catch (let error){
             throw NetworkError.unableToDecodeData
         }
     }
