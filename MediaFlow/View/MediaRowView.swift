@@ -81,6 +81,11 @@ struct MediaRowView: View {
                             .foregroundColor(.blue)
                     }
                     
+                case .paused:
+                    Text("Paused")
+                        .font(.caption)
+                        .foregroundColor(.orange)
+                    
                 case .completed:
                     Text("Downloaded")
                         .font(.caption)
@@ -103,10 +108,4 @@ struct MediaRowView: View {
         .shadow(radius: 2)
     }
     
-    
-    // Unique image per item // for demo app purpose only
-    // temprory
-    func safeImageURL(from original: String) -> URL? {
-        return URL(string: "https://picsum.photos/300")
-    }
 }

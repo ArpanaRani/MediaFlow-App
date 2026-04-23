@@ -10,6 +10,7 @@ import Foundation
 enum DownloadState {
     case notStarted
     case downloading(progress: Double)
+    case paused(progress: Double)
     case completed(localURL: URL)
     case failed
     

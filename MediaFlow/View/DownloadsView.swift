@@ -34,8 +34,9 @@ struct DownloadsView: View {
         }
         
         .onAppear(){
-            
-            viewModel.getDataForMediaListing()
+            if viewModel.mediaItems.isEmpty {
+                viewModel.getDataForMediaListing()
+            }
         }
     }
     

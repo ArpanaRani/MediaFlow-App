@@ -23,11 +23,11 @@ struct CustomTabBarView: View {
                
                HStack {
 
-                   TabBarButtonView(systemImageName: "magnifyingglass", title: "Explore") {
+                   TabBarButtonView(systemImageName: "photo.on.rectangle", title: "Media") {
                        selectedIndex = 0
                    }
                    Spacer()
-                   TabBarButtonView(systemImageName: "photo.on.rectangle", title: "Library") {
+                   TabBarButtonView(systemImageName: "folder.fill", title: "Files") {
                        selectedIndex = 1
                    }
 
